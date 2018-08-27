@@ -45,8 +45,12 @@ let webCtrl = function () {
         catch (e) {
             console.error("error in parsing signature", e)
         }
+        // TODO: Send nonces which make hash of req.body.sign and keyPub begin with 4 zeros. This is proof of work of verifying and valid public key.
         res.send({
-            "response": v.verify(signature)
+            "response": {
+                         "result": v.verify(signature), 
+                         "id": crypto.createHash('sha256').update(keyPub, 'utf8').digest().toString('hex')
+                        }
         });
         res.end();
     }

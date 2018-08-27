@@ -38,7 +38,7 @@ app.controller('signVerify', ['$scope', '$http', function ($scope, $http) {
     }).then(function (success) {
       console.log("success: " + JSON.stringify(success));
       console.log("success.data.response: " + success.data.response);
-      $scope.verifyStatus = success.data.response == true ? "Matched" : "doesn't Match";
+      $scope.verifyStatus = success.data.response.result == true ? "Matched" : "doesn't Match";
     }, function (error) {
       console.log("error:" + error);
     });
