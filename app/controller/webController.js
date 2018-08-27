@@ -15,7 +15,7 @@ let webCtrl = function () {
 
         /* Sign some data with the key */
         let s = key.createSign('sha1');
-        var msg = crypto.createHash('sha256').update(req.body.message, 'utf8').digest().toString('base64');
+        var msg = crypto.createHash('sha256').update(req.body.message, 'utf8').digest().toString('hex');
         s.update(msg);
         var signature = s.sign();
 
